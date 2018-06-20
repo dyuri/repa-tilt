@@ -1,9 +1,26 @@
 {
-  "sources": ["*.js"],
+  "shell": "repa-tilt.js",
+  "entrypoint": "index.html",
+  "sources": [
+    "*.js"
+  ],
   "npm": true,
   "lint": {
     "rules": [
       "polymer-3"
     ]
-  }
+  },
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "builds": [
+    {
+      "preset": "es5-bundled",
+      "name": "es5",
+      "addServiceWorker": false,
+      "js": {
+        "sourcemaps": true
+      }
+    }
+  ]
 }
