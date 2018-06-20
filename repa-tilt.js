@@ -4,14 +4,37 @@
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
+/**
+ * # `<repa-tilt>`
+ * `<repa-tilt>` is a custom HTML component that tilts its content based on the position of the mouse pointer or the orientation of the mobile device
+ * @customElement
+ * @polymer
+ * @demo /demo/index.html Basic demo
+ *
+ */
 class RepaTilt extends PolymerElement {
 
   static get properties() {
     return {
+      /**
+       * Disables X axis tilt
+       */
       noX: Boolean,
+      /**
+       * Disables Y axis tilt
+       */
       noY: Boolean,
+      /**
+       * Disables tilt based on device orientation
+       */
       noMobile: Boolean,
+      /**
+       * Reverses tilt
+       */
       reversed: Boolean,
+      /**
+       * Don't uses gradient for background
+       */
       noGradient: Boolean
     };
   }
@@ -70,7 +93,7 @@ class RepaTilt extends PolymerElement {
         }
       </style>
 
-      <div class$="card {{gradientClass()}}" on-mouseleave="reset" on-mousemove="mousemove">
+      <div class$="card {{_gradientClass()}}">
         <div class="content">
           <slot>repa <b class="high">tilt</b>!</slot>
         </div>
@@ -78,7 +101,10 @@ class RepaTilt extends PolymerElement {
     `;
   }
 
-  gradientClass() {
+  /**
+   * Gets the gradient css class based on the no-gradient property.
+   */
+  _gradientClass() {
     return this.noGradient ? '' : 'card-gradient';
   }
 
@@ -95,15 +121,18 @@ class RepaTilt extends PolymerElement {
     this.rotX = 0;
     this.rotY = 0;
 
-    this.addEventListener('mouseenter', this.mouseinit.bind(this));
-    this.addEventListener('mousemove', this.mousemove.bind(this));
+    this.addEventListener('mouseenter', this._mouseinit.bind(this));
+    this.addEventListener('mousemove', this._mousemove.bind(this));
     this.addEventListener('mouseleave', this.reset.bind(this));
-    window.addEventListener('deviceorientation', this.handleOrientation.bind(this));
+    window.addEventListener('deviceorientation', this._handleOrientation.bind(this));
 
     this._updateTiltB = this._updateTilt.bind(this);
   }
 
-  handleOrientation(e) {
+  /**
+   * `deviceorientation` event handler
+   */
+  _handleOrientation(e) {
     if (this.noMobile) {
       return;
     }
@@ -114,7 +143,10 @@ class RepaTilt extends PolymerElement {
     this.updateTilt(rotX, rotY);
   }
 
-  mouseinit() {
+  /**
+   * Initializes mouse based tilting.
+   */
+  _mouseinit() {
     let crect = this.getBoundingClientRect();
 
     this.position = {
@@ -125,7 +157,10 @@ class RepaTilt extends PolymerElement {
     };
   }
 
-  mousemove(e) {
+  /**
+   * Tilts the `card` based on mouse position.
+   */
+  _mousemove(e) {
     const MAXROT = 45;
 
     let dX = (e.clientX - this.position.left) / this.position.width, // 0 < dX < 1
@@ -136,10 +171,18 @@ class RepaTilt extends PolymerElement {
     this.updateTilt(rotX, rotY);
   }
 
+  /**
+   * Reset the tilting.
+   */
   reset() {
     this.updateTilt(0, 0);
   }
 
+  /**
+   * Tilts the card with the given degrees
+   * @param {number} rotX X axis rotation (in degrees)
+   * @param {number} rotY Y axis rotation (in degrees)
+   */
   updateTilt(rotX, rotY) {
     this.rotX = this.reversed ? -rotX : rotX;
     this.rotY = this.reversed ? -rotY : rotY;
@@ -151,6 +194,9 @@ class RepaTilt extends PolymerElement {
     this._updateRAF = requestAnimationFrame(this._updateTiltB);
   }
 
+  /**
+   * Does the actual tilting.
+   */
   _updateTilt() {
     let card = this.shadowRoot.querySelector('.card');
 

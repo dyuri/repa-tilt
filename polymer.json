@@ -1,4 +1,5 @@
 {
+  "sources": ["*.js"],
   "npm": true,
   "lint": {
     "rules": [
