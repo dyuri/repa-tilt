@@ -47,13 +47,13 @@ class RepaTilt extends PolymerElement {
 
           padding: 5%;
 
-          background: var(--repa-tilt-background, black);
+          background: var(--repa-tilt-background, transparent);
           overflow: hidden;
         }
 
         .card {
-          color: var(--repa-text-color, #fff);
-          background: var(--repa-primary-color, #44a655);
+          color: var(--repa-tilt-text-color, #fff);
+          background: var(--repa-tilt-primary-color, #44a655);
 
           padding: 5%;
           height: 90%;
@@ -79,7 +79,7 @@ class RepaTilt extends PolymerElement {
 
         .content {
           text-align: center;
-          transform: translateZ(var(--repa-tilt-z1, 10vh));
+          transform: translateZ(var(--repa-tilt-z, 10vh));
           transform-style: preserve-3d;
         }
 
