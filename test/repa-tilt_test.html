@@ -19,9 +19,9 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
+    <test-fixture id="NoGradientTestFixture">
       <template>
-        <repa-tilt prop1="new-prop1"></repa-tilt>
+        <repa-tilt no-gradient></repa-tilt>
       </template>
     </test-fixture>
 
@@ -30,19 +30,17 @@
 
         test('instantiating the element with default properties works', () => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'repa-tilt');
           const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello repa-tilt!');
+          const card = elementShadowRoot.querySelector('.card');
+          const content = card.querySelector('.content');
+          assert.equal(content.textContent.replace(/\s+/g,''), 'repatilt!');
         });
 
-        test('setting a property on the element works', () => {
+        test('disabling gradient', () => {
           // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+          const element = fixture('NoGradientTestFixture');
+          assert.equal(element.noGradient, true);
+          assert.equal(element.gradientClass(), '');
         });
 
       });
