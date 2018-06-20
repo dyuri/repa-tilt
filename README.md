@@ -2,6 +2,8 @@
 
 Tilts the content of the element based on mouse position or mobile device orientation.
 
+See [a very basic demo here](https://dyuri.bitbucket.io/repa-tilt/).
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) and npm (packaged with [Node.js](https://nodejs.org)) installed. Run `npm install` to install your element's dependencies, then run `polymer serve` to serve your element locally.
