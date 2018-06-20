@@ -25,3 +25,11 @@ Your application is already set up to be tested via [web-component-tester](https
 ## Documentation
 
 When `polymer serve` is running, the documentation is available under `http://localhost:8081/doc.html`
+
+## ES5 compatible build
+
+Running
+```
+$ polymer build
+```
+will generate an ES5 compatible version of the custom element into `build/es5` directory. An example `index.html` will be included there.
