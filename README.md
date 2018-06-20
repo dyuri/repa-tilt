@@ -1,4 +1,4 @@
-# \<repa-tilt\>
+# <repa-tilt>
 
 Tilts the content of the element based on mouse position or mobile device orientation.
 
