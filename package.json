@@ -1,6 +1,6 @@
 {
   "name": "repa-tilt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "tilt the content of the element based on mouse or mobile device orientation",
   "main": "src/repa-tilt.js",
   "repository": {
