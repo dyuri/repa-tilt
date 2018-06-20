@@ -1,0 +1,28 @@
+{
+  "name": "repa-tilt",
+  "version": "1.0.0",
+  "description": "tilt the content of the element based on mouse or mobile device orientation",
+  "main": "repa-tilt.js",
+  "repository": {
+    "type": "hg",
+    "url": "https://bitbucket.org/dyuri/repa-tilt/"
+  },
+  "keywords": [
+    "tilt",
+    "webcomponent"
+  ],
+  "author": "Gyuri Horák <dyuri@horak.hu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dyuri/repa-tilt/issues"
+  },
+  "homepage": "https://bitbucket.org/dyuri/repa-tilt/",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.0"
+  }
+}

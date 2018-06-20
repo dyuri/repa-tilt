@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>repa-tilt demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+    </script>
+
+    <script type="module" src="../repa-tilt.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        repa-tilt {
+          height: 500px;
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic repa-tilt demo</h3>
+      <demo-snippet>
+        <template>
+          <repa-tilt></repa-tilt>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>w/ content w/o gradient</h3>
+      <demo-snippet>
+        <template>
+          <repa-tilt no-gradient>
+            <h2>This is HTML content</h2>
+            <p>paragraph here with <b>bold text</b></p>
+          </repa-tilt>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>custom styles</h3>
+      <demo-snippet>
+        <template>
+          <style scoped>
+            repa-tilt.fancy {
+              --repa-tilt-background: white;
+              --repa-tilt-primary-color: rgba(213,216,34,.3);
+              --repa-tilt-secondary-color: rgba(152,0,85,.4);
+              --repa-tilt-gradient-deg: 45deg;
+            }
+
+            .low {
+              transform: translateZ(-20vh);
+              display: inline-block;
+              color: black;
+            }
+          </style>
+          <repa-tilt class="fancy">
+            <h2>This is <span class="low">HTML</span> content</h2>
+            <p>paragraph here with <b>bold text</b></p>
+          </repa-tilt>
+        </template>
+      </demo-snippet>
+      <h3>Tilt reversed; Y axis tilt and mobile device orientation disabled</h3>
+      <demo-snippet>
+        <template>
+          <repa-tilt no-y no-mobile reversed></repa-tilt>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
